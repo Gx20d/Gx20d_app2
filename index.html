@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GX20D Gaming - Official Gaming App</title>
+    <title>GX20D Gaming - Admin Dashboard</title>
     <meta name="description" content="The official app for GX20D Gaming YouTube channel – Watch the latest videos, join the gamer community, read gaming news, and chat directly.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,6 +146,52 @@
         </div>
     </div>
 
+    <!-- Login Page -->
+    <div id="login-page" class="hidden min-h-screen text-white">
+        <div class="min-h-screen flex items-center justify-center px-4">
+            <div class="glass-effect rounded-2xl p-8 w-full max-w-md">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 gaming-gradient rounded-2xl flex items-center justify-center mx-auto mb-4 gaming-glow">
+                        <i data-lucide="gamepad-2" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h1 class="text-3xl font-bold text-white mb-2">GX20D Gaming</h1>
+                    <p style="color: var(--gaming-blue-light);">Admin Login</p>
+                </div>
+
+                <form id="login-form" class="space-y-6">
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-gray-300 mb-2">Username</label>
+                        <input type="text" id="username" name="username" required
+                               class="w-full px-3 py-3 rounded-lg border border-blue-300 border-opacity-30 focus:border-blue-500 focus:outline-none transition-colors"
+                               style="background-color: var(--gaming-dark); color: white;"
+                               placeholder="Enter your username">
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                        <input type="password" id="password" name="password" required
+                               class="w-full px-3 py-3 rounded-lg border border-blue-300 border-opacity-30 focus:border-blue-500 focus:outline-none transition-colors"
+                               style="background-color: var(--gaming-dark); color: white;"
+                               placeholder="Enter your password">
+                    </div>
+
+                    <div id="login-error" class="hidden text-red-400 text-sm text-center p-3 rounded-lg" style="background-color: rgba(239, 68, 68, 0.1);">
+                        Invalid username or password. Please try again.
+                    </div>
+
+                    <button type="submit" class="gaming-button w-full justify-center text-lg py-3">
+                        <i data-lucide="log-in" class="h-5 w-5"></i>
+                        Login to Dashboard
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center text-sm text-gray-400">
+                    <p>GX20D Gaming Admin Panel</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main App -->
     <div id="main-app" class="hidden min-h-screen text-white">
         <!-- Header -->
@@ -167,6 +213,9 @@
                         </button>
                         <button class="p-2 rounded-lg hover:bg-blue-300 hover:bg-opacity-20">
                             <i data-lucide="user" class="h-5 w-5" style="color: var(--gaming-blue);"></i>
+                        </button>
+                        <button onclick="logout()" class="p-2 rounded-lg hover:bg-red-300 hover:bg-opacity-20" title="Logout">
+                            <i data-lucide="log-out" class="h-5 w-5" style="color: var(--gaming-red);"></i>
                         </button>
                     </div>
                 </div>
@@ -193,7 +242,7 @@
                             <i data-lucide="youtube" class="h-6 w-6"></i>
                             Subscribe on YouTube
                         </button>
-                        <button onclick="window.open('https://wa.me/201115461767?text=Hello%20GX20D%20Gaming,%20I%20wanted%20to%20ask%20something...', '_blank')" class="gaming-button h-16 text-lg justify-center" style="background-color: #16a085;">
+                        <button onclick="window.open('https://wa.me/201115461767?text=Hello GX20D Gaming, I want to ask something', '_blank')" class="gaming-button h-16 text-lg justify-center" style="background-color: #16a085;">
                             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
                             </svg>
@@ -367,8 +416,7 @@
                     splashScreen.classList.add('splash-hidden');
                     setTimeout(() => {
                         splashScreen.style.display = 'none';
-                        mainApp.classList.remove('hidden');
-                        loadYouTubeVideo();
+                        showLoginPage();
                     }, 500);
                 }, 500);
             }
@@ -480,8 +528,54 @@
             }
         }
 
-        // Initialize active tab styling
+        // Login functionality
+        function showLoginPage() {
+            document.getElementById('login-page').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function showMainApp() {
+            document.getElementById('login-page').classList.add('hidden');
+            document.getElementById('main-app').classList.remove('hidden');
+            loadYouTubeVideo();
+            lucide.createIcons();
+        }
+
+        function logout() {
+            document.getElementById('main-app').classList.add('hidden');
+            document.getElementById('login-page').classList.remove('hidden');
+            // Clear login form
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('login-error').classList.add('hidden');
+            lucide.createIcons();
+        }
+
+        // Handle login form submission
         document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const loginError = document.getElementById('login-error');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                // Check credentials
+                if (username === 'admin' && password === '1234') {
+                    // Login successful
+                    loginError.classList.add('hidden');
+                    showMainApp();
+                } else {
+                    // Login failed
+                    loginError.classList.remove('hidden');
+                    // Clear password field
+                    document.getElementById('password').value = '';
+                }
+            });
+
+            // Initialize active tab styling
             const activeTab = document.querySelector('.tab-button.active-tab');
             if (activeTab) {
                 activeTab.style.backgroundColor = 'var(--gaming-blue)';
@@ -489,5 +583,88 @@
             }
         });
     </script>
+
+<!-- Sign Up Page -->
+<div id="signup-page" class="hidden min-h-screen text-white">
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="glass-effect rounded-2xl p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 gaming-gradient rounded-2xl flex items-center justify-center mx-auto mb-4 gaming-glow">
+                    <i data-lucide="user-plus" class="w-8 h-8 text-white"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-white mb-2">Create Account</h1>
+                <p style="color: var(--gaming-blue-light);">Sign up to GX20D</p>
+            </div>
+            <form id="signup-form" class="space-y-6">
+                <div>
+                    <label for="signup-username" class="block text-sm font-medium text-gray-300 mb-2">Username</label>
+                    <input type="text" id="signup-username" required class="w-full px-3 py-3 rounded-lg border border-blue-300 border-opacity-30 focus:border-blue-500 focus:outline-none transition-colors" style="background-color: var(--gaming-dark); color: white;" placeholder="Choose username">
+                </div>
+                <div>
+                    <label for="signup-password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                    <input type="password" id="signup-password" required class="w-full px-3 py-3 rounded-lg border border-blue-300 border-opacity-30 focus:border-blue-500 focus:outline-none transition-colors" style="background-color: var(--gaming-dark); color: white;" placeholder="Choose password">
+                </div>
+                <div id="signup-success" class="hidden text-green-400 text-sm text-center p-3 rounded-lg" style="background-color: rgba(34, 197, 94, 0.1);">
+                    Account created successfully. You can login now.
+                </div>
+                <div id="signup-error" class="hidden text-red-400 text-sm text-center p-3 rounded-lg" style="background-color: rgba(239, 68, 68, 0.1);">
+                    Username already exists.
+                </div>
+                <button type="submit" class="gaming-button w-full justify-center text-lg py-3">
+                    <i data-lucide="user-plus" class="h-5 w-5"></i>
+                    Create Account
+                </button>
+                <p class="text-sm text-center text-gray-400 mt-4">Already have an account?
+                    <button type="button" onclick="showLoginPage()" class="text-blue-400 underline">Login</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+function showSignupPage() {
+    document.getElementById('login-page').classList.add('hidden');
+    document.getElementById('signup-page').classList.remove('hidden');
+}
+function showLoginPage() {
+    document.getElementById('signup-page').classList.add('hidden');
+    document.getElementById('login-page').classList.remove('hidden');
+}
+
+// تسجيل حساب
+document.getElementById('signup-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('signup-username').value;
+    const password = document.getElementById('signup-password').value;
+
+    if (localStorage.getItem(username)) {
+        document.getElementById('signup-error').classList.remove('hidden');
+        document.getElementById('signup-success').classList.add('hidden');
+    } else {
+        localStorage.setItem(username, password);
+        document.getElementById('signup-success').classList.remove('hidden');
+        document.getElementById('signup-error').classList.add('hidden');
+    }
+});
+
+// تسجيل الدخول
+document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const storedPassword = localStorage.getItem(username);
+
+    if (storedPassword && storedPassword === password) {
+        document.getElementById('login-error').classList.add('hidden');
+        showMainApp();
+    } else {
+        document.getElementById('login-error').classList.remove('hidden');
+        document.getElementById('password').value = '';
+    }
+});
+</script>
+
 </body>
 </html>
